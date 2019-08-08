@@ -1,0 +1,25 @@
+{
+  "name": "yourtracklist-template-engine",
+  "version": "1.0.0",
+  "description": "learning project",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Glebkiselev11/yourtracklist-template-engine.git"
+  },
+  "keywords": [
+    "yourtracklist"
+  ],
+  "author": "gleb kiselev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Glebkiselev11/yourtracklist-template-engine/issues"
+  },
+  "homepage": "https://github.com/Glebkiselev11/yourtracklist-template-engine#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
