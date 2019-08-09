@@ -32,7 +32,7 @@
 		<label class="label_simple">Cover</label>
 		<div class="form__image-window" id="image-form"></div>
 		<label for="inputfile" class='btn-inputfile'>select a file</label>
-		<input name="cover" type="file" id="inputfile" class="inputfile">
+		<input name="cover" type="file" id="inputfile" class="inputfile" @change="previewFiles">
     </div>   
     <button type="submit" class='btn-submit'>Сreate template</button>
 	</form>
@@ -40,7 +40,35 @@
 
 <script>
 
+function handleFileSelect(evt) {
+  const files = evt.target.files;
 
+  // Loop through the FileList and render image files as thumbnails.
+  for (let i = 0, f; f = files[i]; i++) {
+
+    // Only process image files.
+    if (!f.type.match('image.*')) {
+      continue;
+    }
+
+    const reader = new FileReader();
+    
+
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+      return function(e) {
+        // Render thumbnail.
+        const imageWrap = document.querySelector('.form__image-window');
+        imageWrap.style.backgroundImage = `url('${e.target.result}')`;
+      };
+    })(f);
+
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(f);
+  }
+}
+
+document.getElementById('inputfile').addEventListener('change', handleFileSelect, false);
 
 export default {
 	name: 'Form',
@@ -49,11 +77,15 @@ export default {
 			album_name: "",
 			artist_name: "",
 			album_tracks: 0,
-			date_rel: ""
+			date_rel: "",
+			files: []
 			
 		}
 	},
 	methods: {
+		previewFiles() {
+			this.files = this.$refs.myFiles.files
+		},
 		toast(err) {
 			this.$toasted.show(err, {
 						theme: "outline", 
@@ -70,6 +102,8 @@ export default {
 				this.toast("Please enter the number of tracks")
 			} else if (!this.date_rel) {
 				this.toast("Please enter release date")
+			} else if (!this.files) {
+				this.toast("Please upload cover")
 			}
 			
 				
