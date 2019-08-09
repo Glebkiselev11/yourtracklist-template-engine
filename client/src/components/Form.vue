@@ -1,18 +1,19 @@
 <template>
-	<form enctype="multipart/form-data" action="handler.php" method="POST" class="form-wrap">
+	<form enctype="multipart/form-data" v-on:submit.prevent="onSubmit" method="POST" class="form-wrap">
     <div class="form__left-input-wrap">
+
 		<label for="album_name" class="label_simple">Name of album</label>
-		<input type="text" id="album_name" name="album_name" required>
+		<input type="text" id="album_name" name="album_name" v-model="album_name">
 
 		<label for="artist_name" class="label_simple">Name of artist</label>
-		<input type="text" id="artist_name" name="artist_name" required>
+		<input type="text" id="artist_name" name="artist_name" v-model="artist_name">
 
 		
 		<label for="album_tracks" class="label_simple">How many tracks</label>
-		<input type="number" id="album_tracks" name="album_tracks" required>
+		<input type="number" id="album_tracks" name="album_tracks" v-model="album_tracks">
 
 		<label for="date_rel" class="label_simple">Date of release</label>
-		<input type="text" id="date_rel" name="date_rel" required>
+		<input type="text" id="date_rel" name="date_rel" v-model="date_rel">
 
 		<label for="type" class="label_simple">Type of release</label>
 		
@@ -31,17 +32,51 @@
 		<label class="label_simple">Cover</label>
 		<div class="form__image-window" id="image-form"></div>
 		<label for="inputfile" class='btn-inputfile'>select a file</label>
-		<input name="cover" type="file" id="inputfile" class="inputfile" required>
+		<input name="cover" type="file" id="inputfile" class="inputfile">
     </div>   
     <button type="submit" class='btn-submit'>Сreate template</button>
 	</form>
 </template>
 
 <script>
-export default {
-    name: 'Form'
 
+
+
+export default {
+	name: 'Form',
+	data() {
+		return {
+			album_name: "",
+			artist_name: "",
+			album_tracks: 0,
+			date_rel: ""
+			
+		}
+	},
+	methods: {
+		toast(err) {
+			this.$toasted.show(err, {
+						theme: "outline", 
+						position: "top-center", 
+						duration : 3000
+				})
+		},
+		onSubmit() {
+			if (!this.album_name) {
+				this.toast("Please enter album name")
+			} else if (!this.artist_name ){ 
+				this.toast("Please enter artist name")
+			} else if (!this.album_tracks) {
+				this.toast("Please enter the number of tracks")
+			} else if (!this.date_rel) {
+				this.toast("Please enter release date")
+			}
+			
+				
+		}
+	}
 }
+
 </script>
 
 <style>
