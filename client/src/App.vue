@@ -1,7 +1,7 @@
 <template>
 <body>
   <Header />
-  <Form />
+  <router-view />
 </body>
   
 
@@ -9,12 +9,11 @@
 
 <script>
 import Header from './components/Header';
-import Form from './components/Form';
+
 export default {
   name: 'app',
   components: {
-    Header,
-    Form
+    Header
   }
 }
 </script>
@@ -24,7 +23,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {

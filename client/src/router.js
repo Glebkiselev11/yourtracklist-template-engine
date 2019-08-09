@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Search from './components/Form.vue';
+import Form from './components/Form.vue';
 
 Vue.use(Router);
 
