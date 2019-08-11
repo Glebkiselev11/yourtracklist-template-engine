@@ -15,7 +15,7 @@ if(process.env.NODE_ENV === 'development') {
 
 
 // routes
-app.post('/send', routes);
+app.post('/result', routes);
 
 
 

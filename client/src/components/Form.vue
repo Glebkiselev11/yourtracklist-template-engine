@@ -1,5 +1,5 @@
 <template>
-	<form enctype="multipart/form-data" v-on:submit.prevent="onSubmit" method="POST" class="form-wrap">
+	<form enctype="multipart/form-data" v-on:submit.prevent="onSubmit" method="POST" class="form-wrap" action="/result">
     <div class="form__left-input-wrap">
 
 		<label for="album_name" class="label_simple">Name of album</label>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 export default {
 	name: 'Form',
 	data() {
@@ -69,7 +69,11 @@ export default {
 				this.toast("Please enter the number of tracks")
 			} else if (!this.date_rel) {
 				this.toast("Please enter release date")
-			} 			
+			} else if (!this.cover) {
+				this.toast("Please add a cover")
+			} else {
+                this.$router.push('/result')
+            }			
         },
         selectImage (file) {
             this.file = file;
@@ -86,8 +90,20 @@ export default {
             this.content = e.target.result;
             let filename = this.file instanceof File ? this.file.name : '';
             this.$emit('input', filename);
-            this.cover = `background-image: url("${this.content}")`
+            this.cover = `background-image: url("${this.content}")`;
             this.$emit('image-changed', this.content);
+        },
+        // попытка отправить данные на бекенд
+        postQuery() {
+            axios.post(`/result`, {
+                body: [
+                    this.album_name,
+                    this.artist_name,
+                    this.album_tracks,
+                    this.date_rel,
+                    this.content
+                    ]
+            })
         }
             
     },

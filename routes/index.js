@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-router.post('/send', urlencodedParser, (req,res) => {
+router.post('/result', urlencodedParser, (req,res) => {
+    console.log(req.body)
     res.send(`Hello ${req.body.name} ${req.body.secondname}`)
 })
 
