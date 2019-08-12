@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 export default {
 	name: 'Form',
 	data() {
@@ -92,18 +92,6 @@ export default {
             this.$emit('input', filename);
             this.cover = `background-image: url("${this.content}")`;
             this.$emit('image-changed', this.content);
-        },
-        // попытка отправить данные на бекенд
-        postQuery() {
-            axios.post(`/result`, {
-                body: [
-                    this.album_name,
-                    this.artist_name,
-                    this.album_tracks,
-                    this.date_rel,
-                    this.content
-                    ]
-            })
         }
             
     },
