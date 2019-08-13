@@ -14,8 +14,6 @@ export default {
         return {
             loading: false,
             error: null,
-
-
         }
     }
     

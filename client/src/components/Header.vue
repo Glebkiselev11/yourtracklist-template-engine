@@ -8,8 +8,8 @@
                 </div>
                 
                 <ul class="nav__list">
-                <li class="nav__item"><a href="/" class="nav__link">Mixes</a></li>
-                <li class="nav__item"><a href="/" class="nav__link">Releases</a></li>
+                <li class="nav__item"><router-link to="/mix" class="nav__link">Mixes</router-link></li>
+                <li class="nav__item"><router-link to="/" class="nav__link">Releases</router-link></li>
                 </ul>
             </div>
         </nav>
