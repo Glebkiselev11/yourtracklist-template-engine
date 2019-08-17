@@ -54,11 +54,14 @@ export default {
 		}
 	},
 	metaInfo: {
-      title: 'Template Engine',
-      titleTemplate: '%s - Mix',
-      htmlAttrs: {
-        lang: 'en',
-        amp: true
+	meta: [
+      { name: 'description', content: 'This template engine for mixis' }
+    ],
+	title: 'Template Engine',
+	titleTemplate: '%s - Mix',
+	htmlAttrs: {
+		lang: 'en',
+		amp: true
       }
     },
     

@@ -53,12 +53,15 @@ export default {
 		}
 	},
 	metaInfo: {
-      title: 'Template Engine',
-      titleTemplate: '%s - Releases',
-      htmlAttrs: {
-        lang: 'en',
-        amp: true
-      }
+		meta: [
+			{ name: 'description', content: 'This template engine for releases' }
+		],
+		title: 'Template Engine',
+		titleTemplate: '%s - Releases',
+		htmlAttrs: {
+		lang: 'en',
+		amp: true
+		}
     },
     
 	methods: {
