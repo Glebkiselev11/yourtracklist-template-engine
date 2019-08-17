@@ -45,6 +45,7 @@ export default {
 	name: 'Mix',
 	data() {
 		return {
+			mixIsActive: true,
 			album_name: "",
 			artist_name: "",
 			album_tracks: 2,

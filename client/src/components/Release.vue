@@ -44,6 +44,7 @@ export default {
 	name: 'Release',
 	data() {
 		return {
+			relIsActive: true,
 			album_name: "",
 			artist_name: "",
 			album_tracks: 2,

@@ -13,19 +13,16 @@ export default new Router({
             path: '/',
             name: 'realese',
             component: Release,
-            meta: {title: 'releases'}
         },
         {
             path: '/result',
             name: 'result',
-            component: Result,
-            meta: {title: 'result'}
+            component: Result
         },
         {
             path: '/mix',
             name: 'mix',
             component: Mix,
-            meta: {title: 'mix'}
         }
     ]
 })
