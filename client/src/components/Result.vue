@@ -15,9 +15,18 @@ export default {
             loading: false,
             error: null,
         }
-    }
+    },
+    metaInfo: {
+      title: 'Template Engine',
+      titleTemplate: '%s - Result',
+      htmlAttrs: {
+        lang: 'en',
+        amp: true
+      }
+    },
     
 }
+
 </script>
 
 <style>

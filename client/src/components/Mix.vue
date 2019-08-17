@@ -5,12 +5,12 @@
 		<label for="mix_name" class="label_simple">Name of mix</label>
 		<input type="text" id="mix_name" name="mix_name" v-model="mix_name">
 
-		<label for="artist_name" class="label_simple">Name of artist</label>
-		<input type="text" id="artist_name" name="artist_name" v-model="artist_name">
+		<label for="mix_duration" class="label_simple">Mix duration</label>
+		<input type="text" id="mix_duration" name="mix_duration" v-model="mix_duration">
 
 		
-		<label for="album_tracks" class="label_simple">How many tracks</label>
-		<input type="number" id="album_tracks" name="album_tracks" v-model="album_tracks">
+		<label for="mix_tracks" class="label_simple">How many tracks</label>
+		<input type="number" id="mix_tracks" name="mix_tracks" v-model="mix_tracks">
 
 		<label for="date_rel" class="label_simple">Date of release</label>
 		<input type="text" id="date_rel" name="date_rel" v-model="date_rel">
@@ -18,13 +18,13 @@
 		<label for="type" class="label_simple">Type of release</label>
 		
 		<div class="radio-wrap">
-			<label for="ep" class="label_radio">
-			<input type="radio" name="type" value="ep" id="ep" checked>
-			Ep
+			<label for="yourtracklist" class="label_radio">
+			<input type="radio" name="public" value="yourtracklist" id="yourtracklist" checked>
+			yourtracklist
 			</label>
-			<label for="album" class="label_radio">
-			<input type="radio" name="type" value="album" id="album">
-			Album
+			<label for="lost2432615184" class="label_radio">
+			<input type="radio" name="public" value="lost2432615184" id="lost2432615184">
+			lost2432615184
 			</label>
 		</div>
     </div>
@@ -41,6 +41,7 @@
 <script>
 
 export default {
+
 	name: 'Mix',
 	data() {
 		return {
@@ -50,6 +51,14 @@ export default {
             date_rel: "",
             cover: ""			
 		}
+	},
+	metaInfo: {
+      title: 'Template Engine',
+      titleTemplate: '%s - Mix',
+      htmlAttrs: {
+        lang: 'en',
+        amp: true
+      }
     },
     
 	methods: {

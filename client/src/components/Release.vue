@@ -50,6 +50,14 @@ export default {
             date_rel: "",
             cover: ""			
 		}
+	},
+	metaInfo: {
+      title: 'Template Engine',
+      titleTemplate: '%s - Releases',
+      htmlAttrs: {
+        lang: 'en',
+        amp: true
+      }
     },
     
 	methods: {
