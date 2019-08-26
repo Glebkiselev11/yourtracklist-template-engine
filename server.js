@@ -1,9 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
-const routes = require('./routes')
+const cors = require('cors');
+
+
 
 const app = express();
+app.use(cors());
 
 // load env
 dotenv.config({ path: './config.env' })
@@ -15,7 +18,7 @@ if(process.env.NODE_ENV === 'development') {
 
 
 // routes
-app.post('/result', routes);
+app.use('/releases/create', require('./routes/releases'));
 
 
 

@@ -74,11 +74,11 @@ export default {
 				})
         },
 		onSubmit() {
-			if (!this.album_name) {
-				this.toast("Please enter album name")
-			} else if (!this.artist_name ){ 
-				this.toast("Please enter artist name")
-			} else if (!this.album_tracks) {
+			if (!this.mix_name) {
+				this.toast("Please enter mix name")
+			} else if (!this.mix_duration ){ 
+				this.toast("Please enter mix duration")
+			} else if (!this.mix_tracks) {
 				this.toast("Please enter the number of tracks")
 			} else if (!this.date_rel) {
 				this.toast("Please enter release date")

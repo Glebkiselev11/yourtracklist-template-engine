@@ -1,5 +1,5 @@
 <template>
-	<form enctype="multipart/form-data" v-on:submit.prevent="onSubmit" method="POST" class="form-wrap" action="/result">
+	<form ref="myForm" v-on:submit.prevent="onSubmit" class="form-wrap">
     <div class="form__left-input-wrap">
 
 		<label for="album_name" class="label_simple">Name of album</label>
@@ -19,11 +19,11 @@
 		
 		<div class="radio-wrap">
 			<label for="ep" class="label_radio">
-			<input type="radio" name="type" value="ep" id="ep" checked>
+			<input type="radio" name="type" value="ep" id="ep" checked v-model="type">
 			Ep
 			</label>
 			<label for="album" class="label_radio">
-			<input type="radio" name="type" value="album" id="album">
+			<input type="radio" name="type" value="album" id="album" v-model="type">
 			Album
 			</label>
 		</div>
@@ -39,17 +39,19 @@
 </template>
 
 <script>
+import createReleasesCart from '../createReleasesCart'
 
 export default {
 	name: 'Release',
 	data() {
 		return {
-			relIsActive: true,
-			album_name: "",
-			artist_name: "",
+			album_name: '',
+			artist_name: '',
 			album_tracks: 2,
-            date_rel: "",
-            cover: ""			
+			date_rel: '',
+			cover: '',
+			type: 'ep'
+						
 		}
 	},
 	metaInfo: {
@@ -59,8 +61,8 @@ export default {
 		title: 'Template Engine',
 		titleTemplate: '%s - Releases',
 		htmlAttrs: {
-		lang: 'en',
-		amp: true
+			lang: 'en',
+			amp: true
 		}
     },
     
@@ -72,7 +74,7 @@ export default {
 						duration : 3000
 				})
         },
-		onSubmit() {
+		async onSubmit() {
 			if (!this.album_name) {
 				this.toast("Please enter album name")
 			} else if (!this.artist_name ){ 
@@ -84,7 +86,15 @@ export default {
 			} else if (!this.cover) {
 				this.toast("Please add a cover")
 			} else {
-                this.$router.push('/result')
+				// Здесь мы получаем обложку из формы
+				let formData = new FormData();
+				formData.append('cover', this.cover);
+
+
+				await createReleasesCart.sendInfoRelease(this.album_name, this.artist_name, this.album_tracks, this.date_rel, this.type, formData)
+				
+				
+				// await createReleasesCart.sendCoverReleases(formData)
             }			
         },
         selectImage (file) {

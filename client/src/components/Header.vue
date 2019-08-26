@@ -26,6 +26,7 @@ export default {
         return {
             image: require('@/assets/logo.png'),
             relIsActive: true,
+            mixIsActive: false
         }
     },
     watch: {

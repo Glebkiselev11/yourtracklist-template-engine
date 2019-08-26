@@ -5,9 +5,12 @@ const bodyParser = require('body-parser');
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-router.post('/result', urlencodedParser, (req,res) => {
-    console.log(req.body)
-    res.send(`Hello ${req.body.name} ${req.body.secondname}`)
+// Releases
+router.post('/', urlencodedParser, (req,res) => {
+    const { title } = req.body
+    console.log(title)
+    res.status(201).send('Получил');
+
 })
 
 module.exports = router;
