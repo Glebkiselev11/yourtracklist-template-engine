@@ -83,18 +83,38 @@ export default {
 				this.toast("Please enter the number of tracks")
 			} else if (!this.date_rel) {
 				this.toast("Please enter release date")
-			} else if (!this.cover) {
+			} else if (!this.file) {
 				this.toast("Please add a cover")
 			} else {
-				// Здесь мы получаем обложку из формы
+
 				let formData = new FormData();
-				formData.append('cover', this.cover);
 
 
-				await createReleasesCart.sendInfoRelease(this.album_name, this.artist_name, this.album_tracks, this.date_rel, this.type, formData)
+
+				console.log('before +++')
+				console.log(formData)
+				console.log('before ---')
+
+				// here file
+				formData.append('cover', this.file, 'cover.jpg')
+
+				console.log('album_name')
+				console.log(this.album_name)
+
+				formData.append('album_name', this.album_name);
+				formData.append('artist_name', this.artist_name);
+				formData.append('album_tracks', this.album_tracks);
+				formData.append('date_rel', this.date_rel);
+				formData.append('type', this.type);
+
+
+				console.log('after +++')
+				console.log(formData)
+
+				await createReleasesCart.sendInfoRelease(formData);
 				
+
 				
-				// await createReleasesCart.sendCoverReleases(formData)
             }			
         },
         selectImage (file) {

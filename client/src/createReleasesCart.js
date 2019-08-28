@@ -7,27 +7,18 @@ class createReleasesCart {
 
     // Create Release Cart
 
-    static sendInfoRelease(album_name, artist_name, album_tracks, date_rel, type, cover) {
-        console.log(album_name)
-        console.log(artist_name)
-        console.log(album_tracks)
-        console.log(date_rel)
-        console.log(type)
-        console.log(cover)
-        return axios.post(url, {
-            album_name, 
-            artist_name, 
-            album_tracks, 
-            date_rel, 
-            type,
-            cover
-        },
+    static sendInfoRelease(formData) {
+      console.log(formData)
+        return axios.post(url, formData,
         { 
             headers: {
-            'Content-type': 'application/x-www-form-urlencoded',
-            'Content-Type': 'multipart/form-data'
-        }
-        })
+                'Content-Type': 'multipart/form-data'
+        }}).then(function(){
+            console.log('SUCCESS!!');
+          })
+          .catch(function(){
+            console.log('FAILURE!!');
+          });
 
     }
 
