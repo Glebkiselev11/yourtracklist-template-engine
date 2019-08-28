@@ -96,7 +96,7 @@ export default {
 				console.log('before ---')
 
 				// here file
-				formData.append('cover', this.file, 'cover.jpg')
+				formData.append('cover', this.file)
 
 				console.log('album_name')
 				console.log(this.album_name)
