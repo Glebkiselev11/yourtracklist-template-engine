@@ -19,6 +19,7 @@ if(process.env.NODE_ENV === 'development') {
 
 // routes
 app.use('/releases/create', require('./routes/releases'));
+app.use('/mix/create', require('./routes/mix'));
 
 
 

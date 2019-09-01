@@ -21,14 +21,7 @@
 
 <script>
 export default {
-    name: 'Header', 
-    data() {
-        return {
-            image: require('@/assets/logo.png'),
-            relIsActive: true,
-            mixIsActive: false
-        }
-    },
+    name: 'Header',
     watch: {
     '$route' () {
       if (this.$route.path === '/') {
@@ -39,7 +32,15 @@ export default {
         this.relIsActive = false
       }  
     }
-  }
+    }, 
+    data() {
+        return {
+            image: require('@/assets/logo.png'),
+            relIsActive: $route(),
+            mixIsActive: $route()
+        }
+    },
+    
 
 }
 </script>

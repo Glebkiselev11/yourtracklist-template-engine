@@ -1,16 +1,74 @@
 const express = require('express');
 const router = express.Router();
 
-const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
+const multer  = require('multer');
+
+const Jimp = require('jimp');
 
 
-// Releases
-router.post('/', urlencodedParser, (req,res) => {
-    const { title } = req.body
-    console.log(title)
-    res.status(201).send('Получил');
 
-})
+
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, 'cover.jpg');
+    }
+});
+
+const upload = multer({ storage });
+
+
+// Mix
+router.post('/', upload.single('cover'), async (req,res) => {
+    const { mix_name, mix_duration, mix_tracks, date_rel, type} = req.body;
+    console.log(mix_name)
+    console.log(mix_duration)
+
+
+    // Jimp.read('templateImage/template_mix.jpg', (err, template) => {
+    //     Jimp.read('uploads/cover.jpg', (err, image) => {
+    //         if (err) throw err;
+    //         image.cover(192, 192) // resize
+    //         template.composite(image, 304, 4 ).write('result/cart.jpg'); 
+            
+    //             Jimp.loadFont('fontsForCart/gotham_bold_24.fnt').then(font => {
+    //                 // load font from .fnt file 
+    //                 template
+    //                 .print(font, 20, 21, album_name)
+    //                 .write('result/cart.jpg'); 
+    //             });
+
+    //             Jimp.loadFont('fontsForCart/gotham_light_24.fnt').then(font => {
+    //                 // load font from .fnt file 
+    //                 template
+    //                 .print(font, 21, 52, `by ${artist_name}`)
+    //                 .write('result/cart.jpg'); 
+    //             });
+
+    //             Jimp.loadFont('fontsForCart/gotham_light_19.fnt').then(font => {
+    //                 // load font from .fnt file 
+    //                 template
+    //                 .print(font, 21, 91, `${type} ${album_tracks} tracks`)
+    //                 .write('result/cart.jpg'); 
+    //             });
+
+    //             Jimp.loadFont('fontsForCart/gotham_light_17.fnt').then(font => {
+    //                 // load font from .fnt file 
+    //                 template
+    //                 .print(font, 21, 165, date_rel)
+    //                 .write('result/cart.jpg'); 
+    //             });
+
+                
+                
+    //     });
+    // });
+  
+    res.send('succes')
+
+});
 
 module.exports = router;

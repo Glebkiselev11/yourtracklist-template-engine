@@ -39,16 +39,16 @@
 </template>
 
 <script>
+import createMixCart from '../createMixCart'
 
 export default {
 
 	name: 'Mix',
 	data() {
 		return {
-			mixIsActive: true,
-			album_name: "",
-			artist_name: "",
-			album_tracks: 2,
+			mix_name: "",
+			mix_duration: "",
+			mix_tracks: 2,
             date_rel: "",
             cover: ""			
 		}
@@ -73,7 +73,7 @@ export default {
 						duration : 3000
 				})
         },
-		onSubmit() {
+		async onSubmit() {
 			if (!this.mix_name) {
 				this.toast("Please enter mix name")
 			} else if (!this.mix_duration ){ 
@@ -82,10 +82,23 @@ export default {
 				this.toast("Please enter the number of tracks")
 			} else if (!this.date_rel) {
 				this.toast("Please enter release date")
-			} else if (!this.cover) {
+			} else if (!this.file) {
 				this.toast("Please add a cover")
 			} else {
-                this.$router.push('/result')
+                let formData = new FormData();
+
+
+				// Здесь обложка
+				formData.append('cover', this.file)
+
+				// Введенные данные из формы
+				formData.append('mix_name', this.mix_name);
+				formData.append('mix_duration', this.mix_duration);
+				formData.append('mix_tracks', this.mix_tracks);
+				formData.append('date_rel', this.date_rel);
+				formData.append('type', this.type);
+
+				await createMixCart.sendInfoMix(formData);
             }			
         },
         selectImage (file) {

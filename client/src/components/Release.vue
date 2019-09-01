@@ -45,12 +45,13 @@ export default {
 	name: 'Release',
 	data() {
 		return {
+			relIsActive: true,
 			album_name: '',
 			artist_name: '',
 			album_tracks: 2,
 			date_rel: '',
 			cover: '',
-			type: 'ep'
+			type: 'ep',
 						
 		}
 	},
@@ -90,26 +91,15 @@ export default {
 				let formData = new FormData();
 
 
-
-				console.log('before +++')
-				console.log(formData)
-				console.log('before ---')
-
-				// here file
+				// Здесь обложка
 				formData.append('cover', this.file)
 
-				console.log('album_name')
-				console.log(this.album_name)
-
+				// Введенные данные из формы
 				formData.append('album_name', this.album_name);
 				formData.append('artist_name', this.artist_name);
 				formData.append('album_tracks', this.album_tracks);
 				formData.append('date_rel', this.date_rel);
 				formData.append('type', this.type);
-
-
-				console.log('after +++')
-				console.log(formData)
 
 				await createReleasesCart.sendInfoRelease(formData);
 				
