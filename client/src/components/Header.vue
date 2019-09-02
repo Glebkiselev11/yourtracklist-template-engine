@@ -36,8 +36,8 @@ export default {
     data() {
         return {
             image: require('@/assets/logo.png'),
-            relIsActive: $route(),
-            mixIsActive: $route()
+            relIsActive: true,
+            mixIsActive: false
         }
     },
     

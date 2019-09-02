@@ -39,19 +39,19 @@
 </template>
 
 <script>
-import createReleasesCart from '../createReleasesCart'
+import createCart from '../createCart'
 
 export default {
 	name: 'Release',
 	data() {
 		return {
-			relIsActive: true,
 			album_name: '',
 			artist_name: '',
 			album_tracks: 2,
 			date_rel: '',
 			cover: '',
 			type: 'ep',
+			postUrlRequest: 'http://localhost:5000/releases/create'
 						
 		}
 	},
@@ -101,7 +101,7 @@ export default {
 				formData.append('date_rel', this.date_rel);
 				formData.append('type', this.type);
 
-				await createReleasesCart.sendInfoRelease(formData);
+				await createCart.sendInfo(formData, this.postUrlRequest);
 				
 
 				

@@ -19,11 +19,11 @@
 		
 		<div class="radio-wrap">
 			<label for="yourtracklist" class="label_radio">
-			<input type="radio" name="public" value="yourtracklist" id="yourtracklist" checked>
+			<input type="radio" name="public" value="yourtracklist" id="yourtracklist" checked v-model="publicName">
 			yourtracklist
 			</label>
 			<label for="lost2432615184" class="label_radio">
-			<input type="radio" name="public" value="lost2432615184" id="lost2432615184">
+			<input type="radio" name="public" value="lost2432615184" id="lost2432615184" v-model="publicName">
 			lost2432615184
 			</label>
 		</div>
@@ -39,18 +39,20 @@
 </template>
 
 <script>
-import createMixCart from '../createMixCart'
+import createCart from '../createCart'
 
 export default {
 
 	name: 'Mix',
 	data() {
 		return {
-			mix_name: "",
-			mix_duration: "",
+			mix_name: '',
+			mix_duration: '',
 			mix_tracks: 2,
-            date_rel: "",
-            cover: ""			
+            date_rel: '',
+			cover: '',
+			publicName: 'yourtracklist',
+			postUrlRequest: 'http://localhost:5000/mix/create'			
 		}
 	},
 	metaInfo: {
@@ -96,9 +98,9 @@ export default {
 				formData.append('mix_duration', this.mix_duration);
 				formData.append('mix_tracks', this.mix_tracks);
 				formData.append('date_rel', this.date_rel);
-				formData.append('type', this.type);
+				formData.append('public_name', this.publicName);
 
-				await createMixCart.sendInfoMix(formData);
+				await createCart.sendInfo(formData, this.postUrlRequest);
             }			
         },
         selectImage (file) {

@@ -1,13 +1,12 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/mix/create'
 
-class createMixCart {
+class createCart {
     
 
-    // Create Mix Cart
+    // Create Release Cart
 
-    static sendInfoMix(formData) {
+    static sendInfo(formData, url) {
       console.log(formData)
         return axios.post(url, formData,
         { 
@@ -24,4 +23,4 @@ class createMixCart {
 
 }
 
-export default createMixCart;
+export default createCart;
