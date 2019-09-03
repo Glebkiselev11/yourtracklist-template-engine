@@ -52,7 +52,7 @@ export default {
 			date_rel: '',
 			cover: '',
 			type: 'ep',
-			postUrlRequest: 'http://localhost:5000/releases/create'
+			postUrlRequest: '/releases/create'
 						
 		}
 	},
@@ -102,12 +102,8 @@ export default {
 				formData.append('date_rel', this.date_rel);
 				formData.append('type', this.type);
 
-				await createCart.sendInfo(formData, this.postUrlRequest);
-
+				await createCart.sendInfo(formData, this.postUrlRequest);			
 				router.push('result')
-				
-
-				
             }			
         },
         selectImage (file) {

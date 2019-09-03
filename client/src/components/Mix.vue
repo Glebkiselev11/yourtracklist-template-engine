@@ -53,7 +53,7 @@ export default {
             date_rel: '',
 			cover: '',
 			publicName: 'yourtracklist',
-			postUrlRequest: 'http://localhost:5000/mix/create'			
+			postUrlRequest: '/mix/create'			
 		}
 	},
 	metaInfo: {
