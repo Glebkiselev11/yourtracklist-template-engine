@@ -1,6 +1,7 @@
 <template>
     <div class="image-wrap">
-        <label class="label_simple">Result:</label> 
+        <label class="label_simple">Result:</label>
+        <img src="../../../result/cart.jpg" alt="result cart"> 
 
         <a class="link-btn" href="/">Return to the home page</a>
     </div>

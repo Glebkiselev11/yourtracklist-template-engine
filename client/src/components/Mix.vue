@@ -40,6 +40,7 @@
 
 <script>
 import createCart from '../createCart'
+import router from '../router'
 
 export default {
 
@@ -101,6 +102,9 @@ export default {
 				formData.append('public_name', this.publicName);
 
 				await createCart.sendInfo(formData, this.postUrlRequest);
+				
+				router.push('result')
+				
             }			
         },
         selectImage (file) {

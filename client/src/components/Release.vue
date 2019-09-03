@@ -40,6 +40,7 @@
 
 <script>
 import createCart from '../createCart'
+import router from '../router'
 
 export default {
 	name: 'Release',
@@ -102,6 +103,8 @@ export default {
 				formData.append('type', this.type);
 
 				await createCart.sendInfo(formData, this.postUrlRequest);
+
+				router.push('result')
 				
 
 				
