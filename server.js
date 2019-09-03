@@ -16,6 +16,15 @@ if(process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'));
 }
 
+if(process.env.NODE_ENV === 'production') {
+    // set static folder
+
+    app.use(express.static(__dirname + '/public/'))
+
+    // handle spa
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'))
+}
+
 
 // routes
 app.use('/releases/create', require('./routes/releases'));

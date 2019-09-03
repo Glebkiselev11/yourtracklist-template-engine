@@ -82,7 +82,7 @@ router.post('/', upload.single('cover'), async (req,res) => {
         });
     });
   
-    res.send('succes')
+    res.send('success')
 
 });
 
