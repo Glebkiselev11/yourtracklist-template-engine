@@ -25,6 +25,7 @@ const upload = multer({ storage });
 router.post('/', upload.single('cover'), async (req,res) => {
     const { mix_name, mix_duration, mix_tracks, date_rel, public_name} = req.body;
 
+    console.log(mix_name.length)
 
     Jimp.read('templateImage/template_mix.jpg', (err, template) => {
         Jimp.read('uploads/cover.jpg', (err, image) => {
@@ -32,7 +33,13 @@ router.post('/', upload.single('cover'), async (req,res) => {
             image.cover(242, 242) // resize
             template.composite(image, 254, 4 ).write('result/cart.jpg'); 
             
-                Jimp.loadFont('fontsForCart/gotham_bold_24.fnt').then(font => {
+                Jimp.loadFont(
+                    mix_name.length < 18 ? 'fontsForCart/gotham_bold_24.fnt' : 
+                    mix_name.length < 21 ? 'fontsForCart/gotham_bold_21.fnt' : 
+                    mix_name.length < 24 ? 'fontsForCart/gotham_bold_19.fnt' :
+                    mix_name.length < 26 ? 'fontsForCart/gotham_bold_17.fnt' :
+                    mix_name.length < 29 ? 'fontsForCart/gotham_bold_15.fnt' : 
+                    'fontsForCart/gotham_bold_13.fnt' ).then(font => {
                     // load font from .fnt file 
                     template
                     .print(font, 15, 15, mix_name)
