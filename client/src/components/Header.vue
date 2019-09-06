@@ -8,10 +8,13 @@
                 </div>
                 
                 <ul class="nav__list">
-                <li class="nav__item"><router-link to="/mix" class="nav__link"
-                v-bind:class="{ nav__link_active: mixIsActive }">Mixes</router-link></li>
-                <li class="nav__item"><router-link to="/" class="nav__link" 
-                v-bind:class="{ nav__link_active: relIsActive }">Releases</router-link></li>
+                    <router-link to="/mix" tag="li" active-class="nav__link_active">
+                    <a href="#" class="nav__link">Mixes</a>
+                    </router-link>
+
+                    <router-link  to="/" tag="li" exact active-class="nav__link_active">
+                    <a href="#" class="nav__link">Releases</a>
+                    </router-link>
                 </ul>
             </div>
         </nav>
@@ -22,22 +25,10 @@
 <script>
 export default {
     name: 'Header',
-    watch: {
-    '$route' () {
-      if (this.$route.path === '/') {
-        this.relIsActive = true
-        this.mixIsActive = false
-      } else if (this.$route.path === '/mix') {
-        this.mixIsActive = true
-        this.relIsActive = false
-      }  
-    }
-    }, 
     data() {
         return {
-            image: require('@/assets/logo.png'),
-            relIsActive: true,
-            mixIsActive: false
+            image: require('@/assets/logo.png')
+
         }
     },
     

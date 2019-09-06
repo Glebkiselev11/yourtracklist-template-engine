@@ -66,7 +66,7 @@ body {
 }
 
 .label_radio {
-    margin-right: 65px;
+    margin-right: 40px;
     font-weight: 600;
 }
 

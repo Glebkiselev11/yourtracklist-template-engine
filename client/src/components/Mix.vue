@@ -19,13 +19,9 @@
 		
 		<div class="radio-wrap">
 			<label for="yourtracklist" class="label_radio">
-			<input type="radio" name="public" value="yourtracklist" id="yourtracklist" checked v-model="publicName">
-			yourtracklist
-			</label>
+			<input type="radio" name="public" value="yourtracklist" id="yourtracklist" checked v-model="publicName">yourtracklist</label>
 			<label for="lost2432615184" class="label_radio">
-			<input type="radio" name="public" value="lost2432615184" id="lost2432615184" v-model="publicName">
-			lost2432615184
-			</label>
+			<input type="radio" name="public" value="lost2432615184" id="lost2432615184" v-model="publicName">lost2432615184</label>
 		</div>
     </div>
     <div class="form__image-window-wrap">
@@ -53,7 +49,7 @@ export default {
             date_rel: '',
 			cover: '',
 			publicName: 'yourtracklist',
-			postUrlRequest: '/mix/create'			
+			postUrlRequest: 'http://localhost:5000/mix/create'			
 		}
 	},
 	metaInfo: {
@@ -139,9 +135,3 @@ export default {
 }
 
 </script>
-
-<style>
-
-
-
-</style>
