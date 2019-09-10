@@ -135,6 +135,7 @@ input[type=text], input[type=number] {
     
 }
 
+
 .btn-submit:hover {
     background-color: #7100c7;
 }
@@ -148,21 +149,7 @@ input[type=text], input[type=number] {
 	z-index: -1;
 }
 
-.link-btn {
-    display: block;
-    height: 40px;
-    padding: 7px;
-    font-size: 20px;
-    border-radius: 20px;
-    width: 100%;
-    text-decoration: none;
-    border: 1.5px solid black;
-    text-align: center;
-    margin-top: 20px;
-    color: black;
-}
-.link-btn:hover {
-    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
-}
+
+
 
 </style>

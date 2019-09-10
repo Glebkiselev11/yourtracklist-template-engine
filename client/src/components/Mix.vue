@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import createCart from '../createCart'
-import router from '../router'
+import createCart from '@/query/createCart'
+import router from '@/router'
 
 export default {
 

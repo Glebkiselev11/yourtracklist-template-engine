@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import createCart from '../createCart'
-import router from '../router'
+import createCart from '@/query/createCart'
+import router from '@/router'
 
 export default {
 	name: 'Release',
@@ -102,39 +102,45 @@ export default {
 				formData.append('date_rel', this.date_rel);
 				formData.append('type', this.type);
 
-				await createCart.sendInfo(formData, this.postUrlRequest);			
-				router.push('result')
-            }			
-        },
-        selectImage (file) {
-            this.file = file;
-            let reader = new FileReader();
-            reader.onload = this.onImageLoad;
-            reader.readAsDataURL(file);
-        },
-        sync (e) {
-            e.preventDefault();
-            this.selectImage(e.target.files[0]);
-        },
+				const result = await createCart.sendInfo(formData, this.postUrlRequest);
 
-        onImageLoad (e) {
-            this.content = e.target.result;
-            let filename = this.file instanceof File ? this.file.name : '';
-            this.$emit('input', filename);
-            this.cover = `background-image: url("${this.content}")`;
-            this.$emit('image-changed', this.content);
-        }
-            
-    },
-    computed: {
-        src () {
-            if (this.content) {
-                return this.content;
-            }
-            return this.isEmpty ? '' : this.srcPrefix + this.value;
+				console.log(result)
+				
+				if (result.data === 'success') {
+					router.push('result')
+				}
+				
+			}			
+		},
+		selectImage (file) {
+				this.file = file;
+				let reader = new FileReader();
+				reader.onload = this.onImageLoad;
+				reader.readAsDataURL(file);
+		},
+		sync (e) {
+				e.preventDefault();
+				this.selectImage(e.target.files[0]);
+		},
 
-        }
-    },
+		onImageLoad (e) {
+				this.content = e.target.result;
+				let filename = this.file instanceof File ? this.file.name : '';
+				this.$emit('input', filename);
+				this.cover = `background-image: url("${this.content}")`;
+				this.$emit('image-changed', this.content);
+		}
+					
+	},
+	computed: {
+			src () {
+					if (this.content) {
+							return this.content;
+					}
+					return this.isEmpty ? '' : this.srcPrefix + this.value;
+
+			}
+	},
 }
 
 </script>

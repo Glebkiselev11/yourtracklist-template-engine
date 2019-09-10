@@ -25,9 +25,6 @@ const upload = multer({ storage });
 router.post('/', upload.single('cover'), async (req,res) => {
     const { album_name, artist_name, album_tracks, date_rel, type} = req.body;
 
-    console.log(artist_name.length)
-
-
     Jimp.read('templateImage/template_rel.jpg', (err, template) => {
         Jimp.read('uploads/cover.jpg', (err, image) => {
             if (err) throw err;
@@ -74,15 +71,17 @@ router.post('/', upload.single('cover'), async (req,res) => {
                     // load font from .fnt file 
                     template
                     .print(font, 21, 165, date_rel)
-                    .write('result/cart.jpg'); 
+                    .write('result/cart.jpg');
+                    res.send('success') 
+                    
+                    
                 });
 
-                
-                
+                     
         });
     });
   
-    res.send('success')
+    
 
 });
 

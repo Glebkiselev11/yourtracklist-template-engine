@@ -12,13 +12,14 @@ class createCart {
         { 
             headers: {
                 'Content-Type': 'multipart/form-data'
-        }}).then(function(){
-			console.log('SUCCESS!!');
-        }).catch(function(){
-			console.log('FAILURE!!');
+        }}).then(function(data){
+            return data
+        }).catch(function(e){
+			return e;
         });
 
     }
+
 
 }
 

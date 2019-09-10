@@ -29,6 +29,7 @@ if(process.env.NODE_ENV === 'production') {
 // routes
 app.use('/releases/create', require('./routes/releases'));
 app.use('/mix/create', require('./routes/mix'));
+app.use('/result', require('./routes/getCover'))
 
 
 
