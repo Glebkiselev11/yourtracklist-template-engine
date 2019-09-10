@@ -3,7 +3,7 @@
         <label class="label_simple">Result:</label>
         <img src="../../../result/cart.jpg" alt="result cart"> 
 
-        <a class="link-btn" href="/">Return to the home page</a>
+        <router-link class="link-btn" to="/">Return to the home page</router-link>
     </div>
 </template>
 
