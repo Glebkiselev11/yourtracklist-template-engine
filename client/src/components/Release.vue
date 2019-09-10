@@ -52,7 +52,7 @@ export default {
 			date_rel: '',
 			cover: '',
 			type: 'ep',
-			postUrlRequest: 'http://localhost:5000/releases/create'
+			postUrlRequest: '/releases/create'
 						
 		}
 	},

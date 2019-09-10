@@ -18,7 +18,7 @@ export default {
             loading: false,
             error: null,
             coverImage: '',
-            getUrl: 'http://localhost:5000/result'
+            getUrl: '/result'
 
         }
     },
