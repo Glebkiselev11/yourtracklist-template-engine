@@ -9,6 +9,9 @@ module.exports = {
             },
             '/result': {
                 target: 'http://localhost:5000'
+            },
+            '/mix/create': {
+                target: 'http://localhost:5000'
             }
         }
     }
