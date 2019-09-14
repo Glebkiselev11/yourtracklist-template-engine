@@ -2,6 +2,7 @@
   <div class="image-wrap">
     <label class="label_simple">Result:</label>
     <img  alt="result cart">
+    
     <button @click="forceFileDownload" class='btn-downloadFile'>Download this cover</button>
 
     <router-link class="link-btn" to="/">Return to the home page</router-link>
