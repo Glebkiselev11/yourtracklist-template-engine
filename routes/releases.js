@@ -25,15 +25,15 @@ const upload = multer({ storage });
 router.post('/', upload.single('cover'), async (req,res) => {
     const { album_name, artist_name, album_tracks, date_rel, type} = req.body;
 
-    Jimp.read('templateImage/template_rel.jpg', (err, template) => {
-        Jimp.read('uploads/cover.jpg', (err, image) => {
+    Jimp.read('templateImage/template_rel.jpg', async (err, template) => {
+        Jimp.read('uploads/cover.jpg', async (err, image) => {
             if (err) throw err;
             image.cover(192, 192) // resize
             template.composite(image, 304, 4 ).write('result/cart.jpg'); 
 
                 // В зависимости от длины приходящего слова - подставляет нужный размер шрифта, 
                 // чтобы текст не налез на фото
-                Jimp.loadFont(
+                await Jimp.loadFont(
                     album_name.length < 23 ? 'fontsForCart/gotham_bold_24.fnt' : 
                     album_name.length < 26 ? 'fontsForCart/gotham_bold_21.fnt' : 
                     album_name.length < 29 ? 'fontsForCart/gotham_bold_19.fnt' :
@@ -47,7 +47,7 @@ router.post('/', upload.single('cover'), async (req,res) => {
                 });
 
                 // Здесь тоже самое
-                Jimp.loadFont(
+                await Jimp.loadFont(
                     artist_name.length < 21 ?'fontsForCart/gotham_light_24.fnt':
                     artist_name.length < 23 ?'fontsForCart/gotham_light_21.fnt':
                     artist_name.length < 25 ?'fontsForCart/gotham_light_19.fnt':
@@ -60,14 +60,14 @@ router.post('/', upload.single('cover'), async (req,res) => {
                     .write('result/cart.jpg'); 
                 });
 
-                Jimp.loadFont('fontsForCart/gotham_light_19.fnt').then(font => {
+                await Jimp.loadFont('fontsForCart/gotham_light_19.fnt').then(font => {
                     // load font from .fnt file 
                     template
                     .print(font, 21, 91, `${type} ${album_tracks} tracks`)
                     .write('result/cart.jpg'); 
                 });
 
-                Jimp.loadFont('fontsForCart/gotham_light_17.fnt').then(font => {
+                await Jimp.loadFont('fontsForCart/gotham_light_17.fnt').then(font => {
                     // load font from .fnt file 
                     template
                     .print(font, 21, 165, date_rel)

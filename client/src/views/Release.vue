@@ -104,7 +104,6 @@ export default {
 
 				const result = await createCart.sendInfo(formData, this.postUrlRequest);
 
-				console.log(result)
 				
 				if (result.data === 'success') {
 					router.push('result')

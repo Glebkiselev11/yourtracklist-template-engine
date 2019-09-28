@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Release from './components/Release.vue';
-import Result from './components/Result.vue';
-import Mix from './components/Mix.vue';
+import Release from '@/views/Release.vue';
+import Result from '@/views/Result.vue';
+import Mix from '@/views/Mix.vue';
 
 Vue.use(Router);
 

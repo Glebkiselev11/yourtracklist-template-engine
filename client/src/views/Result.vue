@@ -1,7 +1,7 @@
 <template>
   <div class="image-wrap">
     <label class="label_simple">Result:</label>
-    <img  alt="result cart">
+    <img alt="result cart">
     
     <button @click="forceFileDownload" class='btn-downloadFile'>Download this cover</button>
 
@@ -20,7 +20,6 @@ export default {
       error: null,
       coverImage: '',
       getUrl: '/result',
-      resultCover: {},
       base64data: ''
 
     }
@@ -34,6 +33,7 @@ export default {
     }
   },
   methods: {
+    // Метод для скачивания обложки
     forceFileDownload(){
       const url = window.URL.createObjectURL(new Blob([this.resultCover.data]))
       const link = document.createElement('a')
@@ -46,11 +46,11 @@ export default {
   },
   async mounted() {
     await axios({
-        method: 'get',
-        url: this.getUrl,
-        responseType: 'arraybuffer'
+      method: 'get',
+      url: this.getUrl,
+      responseType: 'arraybuffer'
     }).then(response => {
-        this.resultCover = response;
+      this.resultCover = response;
     }).catch(() => console.log('error occured'))
 
     const blobImage = new Blob([this.resultCover.data])
@@ -59,7 +59,7 @@ export default {
     reader.readAsDataURL(blobImage); 
     reader.onloadend = function() {
       this.base64data = reader.result;                
-      console.log(base64data);
+      
     }
   },
 
